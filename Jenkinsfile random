@@ -1,0 +1,29 @@
+pipeline {
+ agent none;
+ stages{
+   stage('B1'){
+    step{
+    echo "this is build"
+  }
+}
+     stage('T1'){
+     parallel{
+      stage('T1-A'){
+       step{
+         echo "this is test 1 A"
+      }
+    }
+     stage('T1-B'){
+      steps{
+       echo "this is test 1 B"
+     }
+   }
+  }
+}
+    stage('D1'){
+     step{
+       echo "this is deploy"
+   }
+  }
+ }
+}
